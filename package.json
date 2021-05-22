@@ -1,0 +1,27 @@
+{
+  "name": "Roulette_table",
+  "version": "1.0.0",
+  "description": "- Add a route for making bets. (GET all bets, POST new bet)\r - Bets should have an amount, betType, status (active/completed)\r - Bet Type can be exact number, 1-18, 19-36, 1st 12, 2nd 12 or 3rd 12\r - Create a Game route that handles a call that triggers a game. (Generate a number between 1 and 36)\r - After the Game is calculated, check all active bets and calculate winnings accordingly (x2 of the amount that was bet), as well as put all active bets status to completed.\r - Feel free to experiment with this one :)",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexander-Stoi/Roulette_table.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alexander-Stoi/Roulette_table/issues"
+  },
+  "homepage": "https://github.com/Alexander-Stoi/Roulette_table#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
