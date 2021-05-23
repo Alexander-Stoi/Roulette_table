@@ -1,5 +1,52 @@
 {
-    "bets": [
-        
-    ]
+  "bets": [
+    {
+      "amount": "200",
+      "betType": "first",
+      "status": "active",
+      "id": "22c22e9b-1640-4761-8f0b-091934c5ebf9"
+    },
+    {
+      "amount": "700",
+      "betType": "second",
+      "status": "active",
+      "id": "f5e99992-0c93-46e5-a4e9-fdcb45f0fb13"
+    },
+    {
+      "amount": "300",
+      "betType": "third",
+      "status": "active",
+      "id": "b3992591-dd5c-4576-b679-335457560d78"
+    },
+    {
+      "amount": "300",
+      "betType": "14",
+      "status": "inactive",
+      "id": "ffcc3de3-b3ef-4fee-acff-7b9745778c93"
+    },
+    {
+      "amount": "400",
+      "betType": "31",
+      "status": "active",
+      "id": "762adf17-3a3f-42f9-9773-44c5f4984aad"
+    },
+    {
+      "amount": "500",
+      "betType": "21",
+      "status": "active",
+      "id": "c0d70b63-bcd7-49d2-a164-8b70162c4695"
+    },
+    {
+      "amount": "600",
+      "betType": "1",
+      "status": "active",
+      "id": "87d60f64-8a4b-4582-b900-f4e5b7504278"
+    },
+    {
+      "amount": "100",
+      "betType": "11",
+      "status": "active",
+      "id": "8549fe7c-dfc0-49e0-a0d7-31c352bbae06"
+    }
+  ]
 }
