@@ -11,7 +11,7 @@ router.post('/', (req, res) => {
     const num = Number(winningNum);
 
     if (num !== NaN && num > 0 && num <= 36) {
-        gameController.getWinners(winningNum).then((response) => {
+        gameController.getWinners(num).then((response) => {
             res.status(200).json(response);
         })
     } else {

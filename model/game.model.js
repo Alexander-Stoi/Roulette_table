@@ -8,18 +8,19 @@ class GameModel {
             const winnings = [];
             const dbData = textService.readDataFromDb('db.json');
             const parsedDbData = JSON.parse(dbData);
-            const numToInt = parseInt(num);
 
             parsedDbData.bets.forEach(bet => {
                 if (bet.status === 'active') {
 
-                    const checkWinner = helpers.winner(bet.betType, numToInt)
+                    const checkWinner = helpers.winner(bet.betType, num)
+
                     if (checkWinner) {
-                        const winAmount = parseInt(bet.amount) * 2;
+                        const winAmount = bet.amount * 2;
+
                         const win = {
                             id: bet.id,
                             betType: bet.betType,
-                            amountWon: parseFloat(winAmount)
+                            amountWon: winAmount
                         }
                         winnings.push(win);
                     }
@@ -27,7 +28,7 @@ class GameModel {
                     bet.status = 'completed';
                 }
             })
-            console.log(parsedDbData.bets);
+
             textService.writeDataToDb('db.json', JSON.stringify(parsedDbData))
             resolve(winnings);
         })

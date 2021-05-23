@@ -3,11 +3,11 @@ const textService = require('../text-service');
 const { v4: uuidv4 } = require('uuid');
 
 class Bet {
-    constructor(id, amount, betType, isActive) {
+    constructor(id, amount, betType, status) {
         this.id = id;
         this.amount = amount;
         this.betType = betType;
-        this.isActive = isActive;
+        this.status = status;
     }
 }
 
@@ -28,16 +28,17 @@ class BetModel {
         return new Promise((resolve, reject) => {
 
             bet.status = 'active';
+
             const newBet = new Bet(
                 bet.id = uuidv4(),
-                bet.amount,
+                parseFloat(bet.amount),
                 bet.betType,
                 bet.status
             )
 
             const dbData = textService.readDataFromDb('db.json');
             const parsedDbData = JSON.parse(dbData);
-            parsedDbData.bets.push(bet);
+            parsedDbData.bets.push(newBet);
 
             const stringifiedDbData = JSON.stringify(parsedDbData);
 
@@ -45,7 +46,6 @@ class BetModel {
 
             resolve({ message: 'Bet successfully added!' });
 
-            reject({ message: 'Rejected' });
         })
     }
 
