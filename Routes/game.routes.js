@@ -8,11 +8,15 @@ const gameController = new GameController();
 router.post('/', (req, res) => {
 
     const winningNum = req.body.num;
+    const num = Number(winningNum);
 
-    gameController.getWinners(winningNum).then((response) => {
-        res.status(200).json(response);
-    })
-
+    if (num !== NaN && num > 0 && num <= 36) {
+        gameController.getWinners(winningNum).then((response) => {
+            res.status(200).json(response);
+        })
+    } else {
+        res.status(400).send({ message: `Wrong winning input` });
+    }
 })
 
 

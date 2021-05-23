@@ -1,4 +1,4 @@
-// const { json } = require('express');
+const { json } = require('express');
 const textService = require('../text-service');
 const { v4: uuidv4 } = require('uuid');
 
@@ -18,7 +18,6 @@ class BetModel {
             const dbData = textService.readDataFromDb('db.json');
             const parsedDbData = JSON.parse(dbData);
             const dbBets = parsedDbData.bets;
-            console.log('dsadasdasd', dbBets);
             resolve(dbBets);
 
         });
@@ -27,7 +26,7 @@ class BetModel {
 
     postBet(bet) {
         return new Promise((resolve, reject) => {
-            // bet.id = uuidv4();
+
             bet.status = 'active';
             const newBet = new Bet(
                 bet.id = uuidv4(),

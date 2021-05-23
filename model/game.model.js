@@ -1,4 +1,6 @@
 const textService = require('../text-service');
+const helpers = require('../Helpers/helpers.winner');
+const { json } = require('express');
 
 class GameModel {
     game(num) {
@@ -11,33 +13,22 @@ class GameModel {
             parsedDbData.bets.forEach(bet => {
                 if (bet.status === 'active') {
 
-                    const dbBetType = bet.betType;
-
-                    if ((num === 'first' || num === 'second' || num === 'third') && dbBetType === num) {
+                    const checkWinner = helpers.winner(bet.betType, numToInt)
+                    if (checkWinner) {
                         const winAmount = parseInt(bet.amount) * 2;
                         const win = {
                             id: bet.id,
-                            amountWon: parseFloat(winAmount)
-
-                        }
-                        // bet.status = 'inactive';
-                        // console.log(`Prv iF`);
-                        winnings.push(win);
-                    }
-
-                    if (numToInt !== NaN && parseInt(dbBetType) !== NaN && numToInt <= 36 && numToInt === parseInt(dbBetType)) {
-                        const winAmount = parseInt(bet.amount) * 2;
-                        const win = {
-                            id: bet.id,
+                            betType: bet.betType,
                             amountWon: parseFloat(winAmount)
                         }
-                        // bet.status = 'inactive';
-                        // console.log(`Vtor iF`);
                         winnings.push(win);
                     }
+                    // set the status to completed
+                    bet.status = 'completed';
                 }
-
             })
+            console.log(parsedDbData.bets);
+            textService.writeDataToDb('db.json', JSON.stringify(parsedDbData))
             resolve(winnings);
         })
     }
